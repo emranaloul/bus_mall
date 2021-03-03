@@ -7,8 +7,12 @@ table.addEventListener('click', removeItemFromCart);
 let cart;
 
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartItems = JSON.parse(localStorage.getItem('cart'))|| [];
+  Product.allProducts = cartItems;
   cart = new Cart(cartItems);
+ 
+  console.log(cartItems);
+
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -17,8 +21,8 @@ function renderCart() {
   clearCart();
   showCart();
 }
-console.log(cart);
-console.log(cartItems.length);
+//console.log(cart);
+//console.log(cartItems.length);
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
@@ -33,8 +37,10 @@ function clearCart() {
 function showCart() {
 
   // TODO: Find the table body
-
+const table = document.getElementById('tbody');
   // TODO: Iterate over the items in the cart
+ 
+  //console.log(Product.all.length)
   // TODO: Create a TR
   // TODO: Create a TD for the delete link, quantity,  and the item
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
